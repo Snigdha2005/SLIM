@@ -311,20 +311,6 @@ Results are streamed through the output interface.
 
 ---
 
-# Design Characteristics
-
-## Advantages
-
-* Runtime configurable operand width
-* Parameterized architecture
-* BRAM-efficient implementation
-* Reusable multiplier datapath
-* DSP inference support
-* Supports very large integer multiplication
-* Streaming-compatible interface
-
----
-
 # Important Notes
 
 ## DSP Inference
@@ -386,35 +372,18 @@ generic_multiplier_vivado.v
 
 ---
 
-# FPGA Resource Usage
-
-The architecture primarily uses:
-
-* DSP slices
-* BRAMs
-* LUTs
-* Flip-flops
-
-Resource utilization depends on:
-
-* `base_mult`
-* `interface_bits`
-* `bram_depth`
-
----
-
-# Suggested Synthesis Settings
+# Suggested Synthesis and Implementation Settings
 
 Recommended Vivado options:
 
 ```text
-Performance_Explore
+Performance Optimised
 ```
 
 and
 
 ```text
-phys_opt_design
+Performance Net Delay High Strategy
 ```
 
 for improved timing closure.
@@ -429,10 +398,4 @@ generic_multiplier #(
     .interface_bits(128),
     .bram_depth(512)
 )
-```
-
-This configuration supports:
-
-```text
-Maximum operand width = 128 × 512 = 65536 bits
 ```
